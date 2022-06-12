@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>New Web</title>
+        <link rel="stylesheet" href="/css/menu.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="allContainer">
+		<div class="goback">
+            <form action="../html/index.html" method="post" ENCTYPE="text/plain">
+                <input type="image" src="../media/go_back.svg" alt="Submit" />
+            </form>
+        </div>
+		<h1>Menu:</h1>
+        <div class="gridContainer">
+            <div class="procMang">
+                <form action="../shell/procMang.cgi" method="post" ENCTYPE="text/plain">
+                    <input type="hidden" name="POSTuser" value="{{user}}" />
+                    <input class="submit" type="submit" value="Proccess Management">
+                </form>
+            </div>
+            <div class="monitor">
+                <form action="../shell/monitor.cgi" method="post" ENCTYPE="text/plain">
+                    <input type="hidden" name="POSTuser" value="{{user}}" />
+                    <input class="submit" type="submit" value="Monitoring">
+                </form>
+            </div>
+            <div class="shutRest">
+                <form action="../shell/restart.cgi" method="post" ENCTYPE="text/plain">
+                    <input type="hidden" name="POSTuser" value="{{user}}" />
+                    <input class="ssubmit" type="submit" value="Restart">
+                </form>
+                <form action="../shell/shutdown.cgi" method="post" ENCTYPE="text/plain">
+                    <input type="hidden" name="POSTuser" value="{{user}}" />
+                    <input class="ssubmit" type="submit" value="Shutdown">
+                </form>
+            </div>
+            <div class="mangLog">
+                <form action="../shell/logMang.cgi" method="post" ENCTYPE="text/plain">
+                    <input type="hidden" name="POSTuser" value="{{user}}" />
+                    <input class="submit" type="submit" value="Log manager">
+                </form>
+            </div>
+            <div class="userMang">
+                <form action="../shell/usrMang.cgi" method="post" ENCTYPE="text/plain">
+                    <input type="hidden" name="POSTuser" value="{{user}}" />
+                    <input class="submit" type="submit" value="User manager">
+                </form>
+            </div>
+            <div class="packetFilter">
+                <form action="../shell/packetFilter.cgi" method="post" ENCTYPE="text/plain">
+                    <input type="hidden" name="POSTuser" value="{{user}}" />
+                    <input class="submit" type="submit" value="Packet Filtering">
+                </form>
+            </div>
+            <div class="mangProg">
+                <form action="../shell/cronMang.cgi" method="post" ENCTYPE="text/plain">
+                    <input type="hidden" name="POSTuser" value="{{user}}" />
+                    <input type="hidden" name="POSToption" value="0" />
+                    <input class="submit" type="submit" value="Programmed Tasks">
+                </form>
+            </div>
+                <div class="music">
+                    <form action="../shell/music.cgi" method="post" ENCTYPE="text/plain">
+                        <input type="hidden" name="POSTuser" value="{{user}}" />
+                        <input class="submit" type="submit" value="Music">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
