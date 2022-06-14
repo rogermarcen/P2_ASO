@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Menu - ASO</title>
+        <link rel="stylesheet" href="../css/menu.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="return">
+            <form action="../html/index.html" method="post" ENCTYPE="text/plain">
+                <input class="boto" type="submit" value="Return" />
+            </form>
+        </div>
+        <div class="menu">
+            <h1>Menu:</h1>
+            <div class="opcions">
+                <div class="opcio">
+                    <form action="../scripts/processos.cgi" method="post" ENCTYPE="text/plain">
+                        <input class="boto" type="submit" value="Gestió de processos">
+                    </form>
+                </div>
+                <div class="opcio">
+                    <form action="../scripts/monitor.cgi" method="post" ENCTYPE="text/plain">
+                        <input class="boto" type="submit" value="Monitorització">
+                    </form>
+                </div>
+                <div class="opcio">
+                    <form action="../scripts/reiniciar.cgi" method="post" ENCTYPE="text/plain">
+                        <input class="boto" type="submit" value="Reiniciar">
+                    </form>
+                    <form action="../scripts/apagar.cgi" method="post" ENCTYPE="text/plain">
+                        <input class="boto" type="submit" value="Apagar">
+                    </form>
+                </div>
+                <div class="opcio">
+                    <form action="../scripts/logs.cgi" method="post" ENCTYPE="text/plain">
+                        <input class="boto" type="submit" value="Gestió de Logs">
+                    </form>
+                </div>
+                <div class="opcio">
+                    <form action="../scripts/usuaris.cgi" method="post" ENCTYPE="text/plain">
+                        <h5>Usuari:</h5>
+                        <input class="text" type="text" name="new_username"></br>
+                        <h5>Contrasenya:</h5>
+                        <input class="text" type="password" name="new_password"></br>
+                        <input class="boto" type="submit" value="Gestió d'usuaris">
+                    </form>
+                </div>
+                <div class="opcio">
+                    <form action="../scripts/acls.cgi" method="post" ENCTYPE="text/plain">
+                        <h5>@IP Origen:</h5> 
+                        <input type="text" name="POSTsrc">
+                        <h5>@IP Desti:</h5> 
+                        <input type="text" name="POSTdest"> <br>
+                        <h5>Port:</h5>
+                        <input type="text" name="POSTport">
+                        <h5>Protocol:</h5> 
+                        <input type="text" name="POSTprtcl"> <br>
+                        <input type="radio" name="POSTtrg" id="trg_acc" value="ACCEPT"> 
+                        <label for="trg_acc">ACCEPT</label>
+                        <input type="radio" name="POSTtrg" id="trg_drp" value="DROP"> 
+                        <label for="trg_drp">DROP</label> <br>
+                        <input type="radio" name="POSTop" id="op_add" value="add"> 
+                        <label for="op_add">ADD</label>
+                        <input type="radio" name="POSTop" id="op_del" value="del"> 
+                        <label for="op_del">DELETE</label><br>
+                        <input type="radio" name="POSTrule" id="rule_in" value="INPUT"> 
+                        <label for="rule_in">INPUT</label>
+                        <input type="radio" name="POSTrule" id="rule_frw" value="FORWARD"> 
+                        <label for="rule_in">FORWARD</label>
+                        <input type="radio" name="POSTrule" id="rule_out" value="OUTPUT"> 
+                        <label for="rule_in">OUTPUT</label><br> 
+                        <input class="boto" type="submit" value="Afegeix ACL">
+                    </form>
+                    <form action="../scripts/acls.cgi" method="post" ENCTYPE="text/plain">
+                        <input class="boto" type="submit" value="Veure ACLs">
+                    </form>
+                </div>
+                <div class="opcio">
+                    <form action="../scripts/tasques.cgi" method="post" ENCTYPE="text/plain">
+                        <h5>Minuts:</h5>
+                        <input class="text" type="text" name="new_min"></br>
+                        <h5>Hores:</h5>
+                        <input class="text" type="text" name="new_hora"></br>
+                        <h5>Dia:</h5>
+                        <input class="text" type="text" name="new_dia"></br>
+                        <h5>Mes:</h5>
+                        <input class="text" type="text" name="new_mes"></br>
+                        <h5>Anys:</h5>
+                        <input class="text" type="text" name="new_any"></br>
+                        <h5>Comanda:</h5>
+                        <input class="text" type="text" name="new_comanda"></br>
+                        <input class="boto" type="submit" value="Afegeix Task">
+                    </form>
+                    <form action="../scripts/tasques.cgi" method="post" ENCTYPE="text/plain">
+                        <input class="boto" type="submit" value="Veure Tasks">
+                    </form>
+                </div>
+                    <div class="opcio">
+                        <form action="../scripts/musica.cgi" method="post" ENCTYPE="text/plain">
+                            <input class="boto" type="submit" value="Music">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

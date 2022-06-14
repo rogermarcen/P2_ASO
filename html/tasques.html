@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Tasques - ASO</title>
+        <link rel="stylesheet" href="../css/tasques.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="menu">
+            <div class="return">
+                <form action="../html/menu.html" method="post" ENCTYPE="text/plain">
+                    <input class="boto" type="submit" value="Return" />
+                </form>
+            </div>
+            <h1>Gestió de Tasques:</h1>
+            <div class="opcions">
+                <div class="opcions_2">
+                    <form action="../scripts/tasques.cgi" method="post" ENCTYPE="text/plain">
+			            <input type="hidden" name="POSTuser" value="{{user}}" />
+                        <input type="hidden" name="POSToption" value="2" />
+                        <h5>ID:</h5>
+                        <input type="text" name="POSTid">
+                        <input class="boto" type="submit" value="Esborra Task">
+                    </form>
+                </div>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>MIN</th>
+                        <th>HOUR</th>
+                        <th>DAY</th>
+                        <th>MONTH</th>
+                        <th>WDAY</th>
+                        <th>PATH</th>
+                    </tr>
+                    {{target}}
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

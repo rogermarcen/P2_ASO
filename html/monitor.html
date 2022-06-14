@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Monitor - ASO</title>
+        <link rel="stylesheet" href="../css/monitor.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+                setTimeout(function(){
+                    window.location.reload(1);
+                }, 5000);
+        </script>
+        <div class="menu">
+            <div class="return">
+                <form action="../html/menu.html" method="post" ENCTYPE="text/plain">
+                    <input class="boto" type="submit" value="Return" />
+                </form>
+            </div>
+            <h1>Monitorització:</h1>
+            <div class="opcions">
+                <div class="opcions_2">
+                    <h2 class="cpu">{cpu}</h2>
+                    <h2 class="mem">{mem}</h2>
+                    <h2 class="disk">{disk}</h2>
+                </div>
+                <table>
+                    <tr>
+                        <th>TIME</th>
+                        <th>DATE</th>
+                        <th>IP</th>
+                        <th>DEVICE</th>
+                    </tr>
+                    {{target}}
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

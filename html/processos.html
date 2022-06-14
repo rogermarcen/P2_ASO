@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Processos - ASO</title>
+        <link rel="stylesheet" href="../css/processos.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="menu">
+	        <div class="return">
+                <form action="../html/menu.html" method="post" ENCTYPE="text/plain">
+                    <input class="boto" type="submit" value="Return" />
+                </form>
+            </div>
+            <h1>Gestió de Processos:</h1>
+            <div class="opcions">
+                <div class="opcions_2">
+                    <form action="../scripts/processos.cgi" method="post" ENCTYPE="text/plain">
+			            <input type="hidden" name="POSTuser" value="{{user}}" />
+                        <input type="hidden" name="POSToption" value="1" />
+                        <h5>PID:</h5>
+                        <input type="text" name="POSTpid">
+                        <input class="boto" type="submit" value="Terminate">
+                    </form>
+                    <form action="../scripts/prcesssos" method="post" ENCTYPE="text/plain">
+			            <input type="hidden" name="POSTuser" value="{{user}}" />
+                        <input type="hidden" name="POSToption" value="2" />
+                        <h5>PID:</h5>
+                        <input type="text" name="POSTpid">
+                        <h5>Time:</h5>
+                        <input type="text" name="POSTtime">
+                        <input class="boto" type="submit" value="Interrupt">
+                    </form>
+                </div>
+                <table>
+                    <tr>
+                        <th>PID</th>
+                        <th>USER</th>
+                        <th>STATUS</th>
+                        <th>SHELL</th>
+                    </tr>
+                    {{target}}
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

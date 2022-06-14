@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Usuaris - ASO</title>
+        <link rel="stylesheet" href="../css/usuaris.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="menu">
+            <div class="return">
+                <form action="../html/menu.html" method="post" ENCTYPE="text/plain">
+                    <input class="boto" type="submit" value="Return" />
+                </form>
+            </div>
+            <h1>Gestió d'Usuaris:</h1>
+            <div class="opcions">
+                <div class="opcions_2">
+                    <form action="../scripts/usuari.cgi" method="post" ENCTYPE="text/plain">
+                        <input type="hidden" name="POSTuser" value="{{user}}" />
+                        <input type="hidden" name="POSToption" value="1" />
+                        <h5>Username:</h5>
+                        <input type="text" name="POSTusr">
+                        <h5>Password:</h5>
+                        <input type="text" name="POSTpas">
+                        <input class="boto" type="submit" value="Add">
+                    </form>
+                    <form action="../scripts/usuari.cgi" method="post" ENCTYPE="text/plain">
+                        <input type="hidden" name="POSTuser" value="{{user}}" />
+                        <input type="hidden" name="POSToption" value="2" />
+                        <h5>Username:</h5>
+                        <input type="text" name="POSTusr">
+                        <input class="boto" type="submit" value="Delete">
+                    </form>
+                </div>
+                <table>
+                    <tr>
+                        <th>Permission level</th>
+                        <th>Username</th>
+                    </tr>
+                    {{target}}
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

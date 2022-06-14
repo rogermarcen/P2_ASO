@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Logs - ASO</title>
+        <link rel="stylesheet" href="../css/logs.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="menu">
+            <div class="return">
+                <form action="../html/menu.html" method="post" ENCTYPE="text/plain">
+                    <input class="boto" type="submit" value="Return" />
+                </form>
+            </div>
+            <h1>Gestió de Logs:</h1>
+            <div class="opcions">
+                <div class="opcions_2">
+                    <h2>Server Log: </h2> 
+                    <form action="../scripts/logs.cgi" method="post" ENCTYPE="text/plain">
+                        <input type="hidden" name="POSTuser" value="{{user}}" />
+                        <input type="hidden" name="POSToption" value="2" />
+                        <h5>Filter by:</h5>
+                        <input type="text" name="POSTfilter">
+                        <input class="boto" type="submit" alt="Filter" />
+                    </form>
+                </div>
+                <table>
+                    <tr>
+                        <th>LOG</th>
+                    </tr>
+                    {{target2}}
+                </table>
+                <div class="opcions_2">
+                    <h2>Custom Log: </h2>
+                    <form action="../scripts/logs.cgi" method="post" ENCTYPE="text/plain">
+                        <input type="hidden" name="POSTuser" value="{{user}}" />
+                        <input type="hidden" name="POSToption" value="1" />
+                        <h5>Filter by:</h5>
+                        <input type="text" name="POSTfilter">
+                        <input class="boto" type="submit" alt="Filter" />
+                    </form>
+                </div>
+                <table>
+                    <tr>
+                        <th>USER</th>
+                        <th>IP</th>
+                        <th>TIME</th>
+                        <th>DATE</th>
+                        <th>MESSAGE</th>
+                    </tr>
+                    {{target}}
+                </table>
+            </div>
+
+        </div>
+    </body>
+</html>
+
