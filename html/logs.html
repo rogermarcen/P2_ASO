@@ -10,37 +10,20 @@
         <div class="menu">
             <div class="return">
                 <form action="../html/menu.html" method="post" ENCTYPE="text/plain">
+                    <input type="hidden" name="web_user" value="{{user}}" />
                     <input class="boto" type="submit" value="Return" />
                 </form>
             </div>
             <h1>Gestió de Logs:</h1>
             <div class="opcions">
-                <div class="opcions_2">
-                    <h2>Server Log: </h2> 
-                    <form action="../scripts/logs.cgi" method="post" ENCTYPE="text/plain">
-                        <input type="hidden" name="POSTuser" value="{{user}}" />
-                        <input type="hidden" name="POSToption" value="2" />
-                        <h5>Filter by:</h5>
-                        <input type="text" name="POSTfilter">
-                        <input class="boto" type="submit" alt="Filter" />
-                    </form>
-                </div>
+                <h2>Server Log: </h2> 
                 <table>
                     <tr>
                         <th>LOG</th>
                     </tr>
-                    {{target2}}
+                    {{codiHTML}}
                 </table>
-                <div class="opcions_2">
-                    <h2>Custom Log: </h2>
-                    <form action="../scripts/logs.cgi" method="post" ENCTYPE="text/plain">
-                        <input type="hidden" name="POSTuser" value="{{user}}" />
-                        <input type="hidden" name="POSToption" value="1" />
-                        <h5>Filter by:</h5>
-                        <input type="text" name="POSTfilter">
-                        <input class="boto" type="submit" alt="Filter" />
-                    </form>
-                </div>
+                <h2>Custom Log: </h2>
                 <table>
                     <tr>
                         <th>USER</th>
@@ -49,10 +32,9 @@
                         <th>DATE</th>
                         <th>MESSAGE</th>
                     </tr>
-                    {{target}}
+                    {{codiHTML2}}
                 </table>
             </div>
-
         </div>
     </body>
 </html>

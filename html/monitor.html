@@ -8,13 +8,14 @@
     </head>
     <body>
         <script>
-                setTimeout(function(){
-                    window.location.reload(1);
-                }, 5000);
+            setTimeout(function(){
+                window.location.reload(1);
+            }, 5000);
         </script>
         <div class="menu">
             <div class="return">
                 <form action="../html/menu.html" method="post" ENCTYPE="text/plain">
+                    <input type="hidden" name="web_user" value="{{user}}" />
                     <input class="boto" type="submit" value="Return" />
                 </form>
             </div>
@@ -32,7 +33,7 @@
                         <th>IP</th>
                         <th>DEVICE</th>
                     </tr>
-                    {{target}}
+                    {{codiHTML}}
                 </table>
             </div>
         </div>

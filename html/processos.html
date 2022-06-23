@@ -10,6 +10,7 @@
         <div class="menu">
 	        <div class="return">
                 <form action="../html/menu.html" method="post" ENCTYPE="text/plain">
+                    <input type="hidden" name="web_user" value="{{user}}" />
                     <input class="boto" type="submit" value="Return" />
                 </form>
             </div>
@@ -17,20 +18,20 @@
             <div class="opcions">
                 <div class="opcions_2">
                     <form action="../scripts/processos.cgi" method="post" ENCTYPE="text/plain">
-			            <input type="hidden" name="POSTuser" value="{{user}}" />
-                        <input type="hidden" name="POSToption" value="1" />
+	            	    <input type="hidden" name="web_user" value="{{user}}" />
+                        <input type="hidden" name="web_option" value="matar" />
                         <h5>PID:</h5>
-                        <input type="text" name="POSTpid">
-                        <input class="boto" type="submit" value="Terminate">
+                        <input type="text" name="web_pid">
+                        <input class="boto" type="submit" value="Matar">
                     </form>
-                    <form action="../scripts/prcesssos" method="post" ENCTYPE="text/plain">
-			            <input type="hidden" name="POSTuser" value="{{user}}" />
-                        <input type="hidden" name="POSToption" value="2" />
+                    <form action="../scripts/processos.cgi" method="post" ENCTYPE="text/plain">
+	            	    <input type="hidden" name="web_user" value="{{user}}" />
+                        <input type="hidden" name="web_option" value="matarTemps" />
                         <h5>PID:</h5>
-                        <input type="text" name="POSTpid">
+                        <input type="text" name="web_pid">
                         <h5>Time:</h5>
-                        <input type="text" name="POSTtime">
-                        <input class="boto" type="submit" value="Interrupt">
+                        <input type="text" name="web_time">
+                        <input class="boto" type="submit" value="Matar">
                     </form>
                 </div>
                 <table>
@@ -40,7 +41,7 @@
                         <th>STATUS</th>
                         <th>SHELL</th>
                     </tr>
-                    {{target}}
+                    {{codiHTML}}
                 </table>
             </div>
         </div>

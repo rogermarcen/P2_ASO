@@ -10,6 +10,7 @@
         <div class="menu">
             <div class="return">
                 <form action="../html/menu.html" method="post" ENCTYPE="text/plain">
+                    <input type="hidden" name="web_user" value="{{user}}" />
                     <input class="boto" type="submit" value="Return" />
                 </form>
             </div>
@@ -17,10 +18,10 @@
             <div class="opcions">
                 <div class="opcions_2">
                     <form action="../scripts/tasques.cgi" method="post" ENCTYPE="text/plain">
-			            <input type="hidden" name="POSTuser" value="{{user}}" />
-                        <input type="hidden" name="POSToption" value="2" />
+			            <input type="hidden" name="web_user" value="{{user}}" />
+                        <input type="hidden" name="web_option" value="esborrar" />
                         <h5>ID:</h5>
-                        <input type="text" name="POSTid">
+                        <input type="text" name="web_ID">
                         <input class="boto" type="submit" value="Esborra Task">
                     </form>
                 </div>
@@ -34,7 +35,7 @@
                         <th>WDAY</th>
                         <th>PATH</th>
                     </tr>
-                    {{target}}
+                    {{codiHTML}}
                 </table>
             </div>
         </div>

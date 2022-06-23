@@ -3,13 +3,13 @@
     <head>
         <meta charset="utf-8">
         <title>Menu - ASO</title>
-        <link rel="stylesheet" href="../css/menu.css">
+        <link rel="stylesheet" href="../css/menu1.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div class="return">
             <form action="../html/index.html" method="post" ENCTYPE="text/plain">
-                <input class="boto" type="submit" value="Return" />
+		    <input class="boto" type="submit" value="Return" />
             </form>
         </div>
         <div class="menu">
@@ -17,68 +17,82 @@
             <div class="opcions">
                 <div class="opcio">
                     <form action="../scripts/processos.cgi" method="post" ENCTYPE="text/plain">
-                        <input class="boto" type="submit" value="Gestió de processos">
+                        <input type="hidden" name="web_user" value="{{user}}" />
+			            <input class="boto" type="submit" value="Gestió de processos">
                     </form>
                 </div>
                 <div class="opcio">
                     <form action="../scripts/monitor.cgi" method="post" ENCTYPE="text/plain">
+                        <input type="hidden" name="web_user" value="{{user}}" />
                         <input class="boto" type="submit" value="Monitorització">
                     </form>
                 </div>
                 <div class="opcio">
                     <form action="../scripts/reiniciar.cgi" method="post" ENCTYPE="text/plain">
+                        <input type="hidden" name="web_user" value="{{user}}" />
                         <input class="boto" type="submit" value="Reiniciar">
                     </form>
                     <form action="../scripts/apagar.cgi" method="post" ENCTYPE="text/plain">
+                        <input type="hidden" name="web_user" value="{{user}}" />
                         <input class="boto" type="submit" value="Apagar">
                     </form>
                 </div>
                 <div class="opcio">
                     <form action="../scripts/logs.cgi" method="post" ENCTYPE="text/plain">
+                        <input type="hidden" name="web_user" value="{{user}}" />
                         <input class="boto" type="submit" value="Gestió de Logs">
                     </form>
                 </div>
                 <div class="opcio">
                     <form action="../scripts/usuaris.cgi" method="post" ENCTYPE="text/plain">
+                        <input type="hidden" name="web_user" value="{{user}}" />
                         <h5>Usuari:</h5>
                         <input class="text" type="text" name="new_username"></br>
                         <h5>Contrasenya:</h5>
                         <input class="text" type="password" name="new_password"></br>
+                        <input type="radio" name="web_option" value="afegir"> 
+                        <label for="op_add">ADD</label>
+                        <input type="radio" name="web_option" value="esborrar"> 
+                        <label for="op_del">DELETE</label><br>
                         <input class="boto" type="submit" value="Gestió d'usuaris">
                     </form>
                 </div>
                 <div class="opcio">
                     <form action="../scripts/acls.cgi" method="post" ENCTYPE="text/plain">
+                        <input type="hidden" name="web_user" value="{{user}}" />
+                        <input type="hidden" name="web_option" value="modificar" />
                         <h5>@IP Origen:</h5> 
-                        <input type="text" name="POSTsrc">
+                        <input type="text" name="web_IPorigen">
                         <h5>@IP Desti:</h5> 
-                        <input type="text" name="POSTdest"> <br>
+                        <input type="text" name="web_IPdesti"> <br>
                         <h5>Port:</h5>
-                        <input type="text" name="POSTport">
+                        <input type="text" name="web_port">
                         <h5>Protocol:</h5> 
-                        <input type="text" name="POSTprtcl"> <br>
-                        <input type="radio" name="POSTtrg" id="trg_acc" value="ACCEPT"> 
+                        <input type="text" name="web_protocol"> <br>
+                        <input type="radio" name="web_tipo" value="accept"> 
                         <label for="trg_acc">ACCEPT</label>
-                        <input type="radio" name="POSTtrg" id="trg_drp" value="DROP"> 
+                        <input type="radio" name="web_tipo" value="deny"> 
                         <label for="trg_drp">DROP</label> <br>
-                        <input type="radio" name="POSTop" id="op_add" value="add"> 
+                        <input type="radio" name="web_estat" value="add"> 
                         <label for="op_add">ADD</label>
-                        <input type="radio" name="POSTop" id="op_del" value="del"> 
+                        <input type="radio" name="web_estat" value="del"> 
                         <label for="op_del">DELETE</label><br>
-                        <input type="radio" name="POSTrule" id="rule_in" value="INPUT"> 
+                        <input type="radio" name="web_direccio" value="INPUT"> 
                         <label for="rule_in">INPUT</label>
-                        <input type="radio" name="POSTrule" id="rule_frw" value="FORWARD"> 
+                        <input type="radio" name="web_direccio" value="FORWARD"> 
                         <label for="rule_in">FORWARD</label>
-                        <input type="radio" name="POSTrule" id="rule_out" value="OUTPUT"> 
+                        <input type="radio" name="web_direccio" value="OUTPUT"> 
                         <label for="rule_in">OUTPUT</label><br> 
-                        <input class="boto" type="submit" value="Afegeix ACL">
+                        <input class="boto" type="submit" value="Gestió ACL">
                     </form>
                     <form action="../scripts/acls.cgi" method="post" ENCTYPE="text/plain">
+                        <input type="hidden" name="web_user" value="{{user}}" />
                         <input class="boto" type="submit" value="Veure ACLs">
                     </form>
                 </div>
                 <div class="opcio">
                     <form action="../scripts/tasques.cgi" method="post" ENCTYPE="text/plain">
+                        <input type="hidden" name="web_option" value="afegir" />
                         <h5>Minuts:</h5>
                         <input class="text" type="text" name="new_min"></br>
                         <h5>Hores:</h5>
