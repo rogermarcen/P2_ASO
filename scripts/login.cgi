@@ -13,14 +13,12 @@ pass=${pass::-1}
 #Comprovo que l'usuari existeixi
 
 
-#Guardo la data actual
-hour=$(date + "%T")
-date=$(date + "%d/%b/%Y")
 
 #if [$flag_ok -eq 1] then
 	#Mostro al html les opcions segons els permisos
-	echo $(cat ../html/menu.html | sed -e "s~{{user}}~$user~g")
-	#Falta fer el logg
+	echo $(cat ../html/menu.html)
+	#logger LOG: Usuari loggejat correctament
 #else
 #	echo $(cat ../html/index.html | sed -e "s/display:none;/display:initial;/g")
+#	logger LOG: Usuari incorrecte
 #fi

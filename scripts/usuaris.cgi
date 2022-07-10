@@ -3,41 +3,43 @@ echo 'Content-Type: text/html'
 echo
 echo
 
-read web_user
-user=$(echo $web_user | sed -e "s/web_user=//g")
-user=${user::-1}
-now=$(date +"%T")
-varDate=$(date +"%d/%b/%Y")
-
 read web_option
 option=$(echo $web_option | sed -e "s/web_option=//g")
 option=${option::-1}
 
 if [[ "$option" == "afegir" ]]
 then
-	read new_user
-	varUsr=$(echo $new_user | sed -e "s/new_user=//g")
-	varUsr=${varUsr::-1}
+	read new_username
+	user=$(echo $new_username | sed -e "s/new_username=//g")
+	user=${user::-1}
 
 	read new_password
-    varPas=$(echo $new_password | sed -e "s/new_password=//g")
-    varPas=${varPas::-1}
+   	pass=$(echo $new_password | sed -e "s/new_password=//g")
+    	pass=${pass::-1}
 
-	if [[ "$varUsr" != "" ]] && [[ "$varPas" != "" ]]
+	if [[ "$user" != "" ]] && [[ "$pass" != "" ]]
 	then
-		sudo useradd $varUsr
-		echo -e "$varPas\n$varPas" | sudo passwd "$varUsr"
-#		logger -p local2.info "<<:$user $REMOTE_ADDR $now $varDate :>>Added user $varUsr"
+		sudo useradd $user
+		echo -e "$pass\n$pass" | sudo passwd "$user"
+		logger "LOG: Usuari creat correctament"
+	else
+		logger "LOG: Error creant usuari"
 	fi
 elif [[ "$option" == "esborrar" ]]
 then
-	read new_user
-    varUsr=$(echo $new_user | sed -e "s/new_user=//g")
-    varUsr=${varUsr::-1}
-	sudo userdel $varUsr
-
-#	logger -p local2.info "<<:$user $REMOTE_ADDR $now $varDate :>>Deleted usr $varUsr"
+	read new_username
+    	user=$(echo $new_username | sed -e "s/new_username=//g")
+    	user=${user::-1}
+	#Comprovar que l'usuari existeix
+	
+	if [[ "$user" != "" ]]
+	then
+		sudo userdel $user
+		logger "LOG: Usuari esborrat correctament"
+	else
+		logger "LOG: Error esborrant usuari"
+	fi
 fi
 
-echo $(cat ../html/menu.html | sed -e "s~{{user}}~$user~g")
+echo $(cat ../html/menu.html)
 

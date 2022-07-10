@@ -3,13 +3,7 @@
 #echo
 #echo
 
-read web_user
-user=$(echo $web_user | sed -e "s/web_user=//g")
-user=${user::-1}
-now=$(date +"%T")
-varDate=$(date +"%d/%b/%Y")
-
-#logger -p local2.info "<<:$user $REMOTE_ADDR $now $varDate :>>shutdown the server"
+logger "LOG: Usuari ha apagat el servidor"
 
 hostname=$(hostname -I)
 hostname=${hostname::-1}
