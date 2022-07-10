@@ -10,29 +10,16 @@
         <div class="menu">
             <div class="return">
                 <form action="../html/menu.html" method="post" ENCTYPE="text/plain">
-                    <input type="hidden" name="web_user" value="{{user}}" />
                     <input class="boto" type="submit" value="Return" />
                 </form>
             </div>
             <h1>Gestió de Logs:</h1>
             <div class="opcions">
-                <h2>Server Log: </h2> 
                 <table>
                     <tr>
-                        <th>LOG</th>
+                        <th>Missatges LOG</th>
                     </tr>
                     {{codiHTML}}
-                </table>
-                <h2>Custom Log: </h2>
-                <table>
-                    <tr>
-                        <th>USER</th>
-                        <th>IP</th>
-                        <th>TIME</th>
-                        <th>DATE</th>
-                        <th>MESSAGE</th>
-                    </tr>
-                    {{codiHTML2}}
                 </table>
             </div>
         </div>

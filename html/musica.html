@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Musica - ASO</title>
+        <link rel="stylesheet" href="../css/musica.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="menu">
+		<div class="return">
+			<form action="../html/menu.html" method="post" ENCTYPE="text/plain">
+                    		<input class="boto" type="submit" value="Return" />
+                	</form>
+        	</div>
+            <h1>Reproductor de Musica: </h1>
+            <div class="opcions">
+                <div class="opcions_2">
+                    <div class="topbar">
+                        <form action="../scripts/musica.cgi" method="post" ENCTYPE="text/plain">
+                            <input type="hidden" name="web_option" value="anterior">
+                            <input class="submit" type="submit" value="Anterior">
+                        </form>
+                        <form action="../scripts/musica.cgi" method="post" ENCTYPE="text/plain">
+                            <input type="hidden" name="web_option" value="play">
+                            <input class="submit" type="submit" value="Play">
+                        </form>
+                        <form action="../scripts/musica.cgi" method="post" ENCTYPE="text/plain">
+                            <input type="hidden" name="web_option" value="pause">
+                            <input class="submit" type="submit" value="Pause">
+                        </form>
+                        <form action="../scripts/musica.cgi" method="post" ENCTYPE="text/plain">
+                            <input type="hidden" name="web_option" value="seguent">
+                            <input class="submit" type="submit" value="Seguent">
+                        </form>
+                    </div>
+                    <div class="topbar">
+                        <form action="../scripts/musica.cgi" method="post" ENCTYPE="text/plain">
+                            <input type="hidden" name="web_option" value="aleatori">
+                            {dis_shuffle}
+                            <input class="submit" type="submit" value="Aleatori">
+                        </form>
+                        <form action="../scripts/musica.cgi" method="post" ENCTYPE="text/plain">
+                            <input type="hidden" name="web_option" value="repetir">
+				{dis_replay}
+                            <input class="submit" type="submit" value="Repetir">
+                        </form>
+                    </div>
+                </div>
+                <table>
+                    <tr>
+                        <th>SONGS</th>
+                    </tr>
+                    {{codiHTML}}
+                </table>
+            </div>
+	</div>
+    </body>
+</html>

@@ -8,9 +8,8 @@
     </head>
     <body>
         <div class="menu">
-	        <div class="return">
+	    <div class="return">
                 <form action="../html/menu.html" method="post" ENCTYPE="text/plain">
-                    <input type="hidden" name="web_user" value="{{user}}" />
                     <input class="boto" type="submit" value="Return" />
                 </form>
             </div>
@@ -18,15 +17,13 @@
             <div class="opcions">
                 <div class="opcions_2">
                     <form action="../scripts/processos.cgi" method="post" ENCTYPE="text/plain">
-	            	    <input type="hidden" name="web_user" value="{{user}}" />
-                        <input type="hidden" name="web_option" value="matar" />
+	            	<input type="hidden" name="web_option" value="matar" />
                         <h5>PID:</h5>
                         <input type="text" name="web_pid">
                         <input class="boto" type="submit" value="Matar">
                     </form>
                     <form action="../scripts/processos.cgi" method="post" ENCTYPE="text/plain">
-	            	    <input type="hidden" name="web_user" value="{{user}}" />
-                        <input type="hidden" name="web_option" value="matarTemps" />
+	            	<input type="hidden" name="web_option" value="matarTemps" />
                         <h5>PID:</h5>
                         <input type="text" name="web_pid">
                         <h5>Time:</h5>
