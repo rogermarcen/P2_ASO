@@ -19,37 +19,59 @@
                     <div class="topbar">
                         <form action="../scripts/musica.cgi" method="post" ENCTYPE="text/plain">
                             <input type="hidden" name="web_option" value="anterior">
+				<input type="hidden" name="web_id" value="{{id}}"/>
+                                <input type="hidden" name="web_aleatori" value="{{aleatori}}"/>
+                                <input type="hidden" name="web_repetir" value="{{repetir}}"/>
+                                <input type="hidden" name="web_estat" value="{{estat}}"/>
                             <input class="submit" type="submit" value="Anterior">
                         </form>
                         <form action="../scripts/musica.cgi" method="post" ENCTYPE="text/plain">
                             <input type="hidden" name="web_option" value="play">
+				<input type="hidden" name="web_id" value="{{id}}"/>
+                                <input type="hidden" name="web_aleatori" value="{{aleatori}}"/>
+                                <input type="hidden" name="web_repetir" value="{{repetir}}"/>
+                                <input type="hidden" name="web_estat" value="{{estat}}"/>
                             <input class="submit" type="submit" value="Play">
                         </form>
                         <form action="../scripts/musica.cgi" method="post" ENCTYPE="text/plain">
                             <input type="hidden" name="web_option" value="pause">
+				<input type="hidden" name="web_id" value="{{id}}"/>
+                                <input type="hidden" name="web_aleatori" value="{{aleatori}}"/>
+                                <input type="hidden" name="web_repetir" value="{{repetir}}"/>
+                                <input type="hidden" name="web_estat" value="{{estat}}"/>
                             <input class="submit" type="submit" value="Pause">
                         </form>
                         <form action="../scripts/musica.cgi" method="post" ENCTYPE="text/plain">
                             <input type="hidden" name="web_option" value="seguent">
+				<input type="hidden" name="web_id" value="{{id}}"/>
+                                <input type="hidden" name="web_aleatori" value="{{aleatori}}"/>
+                                <input type="hidden" name="web_repetir" value="{{repetir}}"/>
+                                <input type="hidden" name="web_estat" value="{{estat}}"/>
                             <input class="submit" type="submit" value="Seguent">
                         </form>
                     </div>
                     <div class="topbar">
                         <form action="../scripts/musica.cgi" method="post" ENCTYPE="text/plain">
                             <input type="hidden" name="web_option" value="aleatori">
-                            {dis_shuffle}
-                            <input class="submit" type="submit" value="Aleatori">
+				<input type="hidden" name="web_id" value="{{id}}"/>
+                                <input type="hidden" name="web_aleatori" value="{{aleatori}}"/>
+                                <input type="hidden" name="web_repetir" value="{{repetir}}"/>
+                                <input type="hidden" name="web_estat" value="{{estat}}"/>
+                            <input class="submit"  type="submit" value="Aleatori">
                         </form>
                         <form action="../scripts/musica.cgi" method="post" ENCTYPE="text/plain">
                             <input type="hidden" name="web_option" value="repetir">
-				{dis_replay}
+				<input type="hidden" name="web_id" value="{{id}}"/>
+                                <input type="hidden" name="web_aleatori" value="{{aleatori}}"/>
+                                <input type="hidden" name="web_repetir" value="{{repetir}}"/>
+                                <input type="hidden" name="web_estat" value="{{estat}}"/>
                             <input class="submit" type="submit" value="Repetir">
                         </form>
                     </div>
                 </div>
                 <table>
                     <tr>
-                        <th>SONGS</th>
+                        <th>Llistat cançons</th>
                     </tr>
                     {{codiHTML}}
                 </table>

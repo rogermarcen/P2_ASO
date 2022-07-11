@@ -96,7 +96,7 @@
                         <h5>Mes:</h5>
                         <input class="text" type="text" name="new_mes"></br>
                         <h5>Anys:</h5>
-                        <input class="text" type="text" name="new_any"></br>
+                        <input class="text" type="text" name="new_diaSet"></br>
                         <h5>Comanda:</h5>
                         <input class="text" type="text" name="new_comanda"></br>
                         <input class="boto" type="submit" value="Afegeix Task">
@@ -108,6 +108,10 @@
                     <div class="opcio">
                         <form action="../scripts/musica.cgi" method="post" ENCTYPE="text/plain">
                             <input class="boto" type="submit" value="Music">
+				<input type="hidden" name="web_id" value="0"/>
+				<input type="hidden" name="web_aleatori" value="0"/>
+				<input type="hidden" name="web_repetir" value="0"/>
+				<input type="hidden" name="web_estat" value="0"/>
                         </form>
                     </div>
                 </div>
