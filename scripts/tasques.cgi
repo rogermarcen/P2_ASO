@@ -12,43 +12,46 @@ logger "LOG: Usuari entre opcio tasques"
 if [[ "$option" == "afegir" ]]
 then
 	read new_min
-	varMin=$(echo $new_min | sed -e "s/new_min=//g")
-	varMin=${varMin::-1}
+	min=$(echo $new_min | sed -e "s/new_min=//g")
+	min=${min::-1}
 
 	read new_hora
-    	varHour=$(echo $new_hora | sed -e "s/new_hora=//g")
-    	varHour=${varHour::-1}
+    	hora=$(echo $new_hora | sed -e "s/new_hora=//g")
+    	hora=${hora::-1}
 
 	read new_dia
-	 varDay=$(echo $new_dia | sed -e "s/new_dia=//g")
-	 varDay=${varDay::-1}
+	 dia=$(echo $new_dia | sed -e "s/new_dia=//g")
+	 dia=${dia::-1}
 
 	read new_mes
-	varMonth=$(echo $new_mes | sed -e "s/new_mes=//g")
-	varMonth=${varMonth::-1}
+	mes=$(echo $new_mes | sed -e "s/new_mes=//g")
+	mes=${mes::-1}
 
-	read new_any
-	varWday=$(echo $new_any | sed -e "s/new_any=//g")
-	varWday=${varWday::-1}
+	read new_diaSet
+	diaSet=$(echo $new_diaSet | sed -e "s/new_diaSet=//g")
+	diaSet=${diaSet::-1}
 
 	read new_comanda
-	varPath=$(echo $new_comanda | sed -e "s/new_comanda=//g")
-	varPath=${varPath::-1}
+	comanda=$(echo $new_comanda | sed -e "s/new_comanda=//g")
+	comanda=${comanda::-1}
 
-	sudo crontab -u root -l > ../tasques
-	echo "$varMin $varHour $varDay $varMonth $varWday $varPath" >> ../tasques
-	sudo crontab -u root ../tasques
+	sudo crontab -u root -l > cron
+	echo "$min $hora $dia $mes $diaSet $comanda" >> cron
+	sudo crontab -u root cron
 
 	logger "LOG: Tasca afegida correctament"
 elif [[ "$option" == "esborrar" ]]
 then
 	read web_ID
-	varId=$(echo $web_ID | sed -e "s/web_ID=//g")
-	varId=${varId::-1}
+	id=$(echo $web_ID | sed -e "s/web_ID=//g")
+	id=${id::-1}
 
-	sudo crontab -u root -l > ../tasques
-	sudo sed -i.bak -e "${varId}d" ../tasques
-	sudo crontab -u root ../tasques
+	sudo crontab -u root -l > cron
+	sudo sed $id,$id"d" cron >> cronbckp
+	sudo rm cron
+	sudo cp cronbckp cron
+	sudo rm cronbckp
+	sudo crontab -u root cron
 
 	logger "LOG: Tasca esborrada correctament"
 fi

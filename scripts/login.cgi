@@ -14,11 +14,12 @@ pass=${pass::-1}
 
 
 
-#if [$flag_ok -eq 1] then
+if id -u "$user" >/dev/null 2>&1 
+then
 	#Mostro al html les opcions segons els permisos
 	echo $(cat ../html/menu.html)
-	#logger LOG: Usuari loggejat correctament
-#else
-#	echo $(cat ../html/index.html | sed -e "s/display:none;/display:initial;/g")
-#	logger LOG: Usuari incorrecte
-#fi
+	logger LOG: Usuari loggejat correctament
+else
+	echo $(cat ../html/index.html)
+	logger LOG: Usuari incorrecte
+fi

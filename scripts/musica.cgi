@@ -9,86 +9,95 @@ read web_option
 option=$(echo $web_option | sed -e "s/web_option=//g")
 option=${option::-1}
 
-mypipe='/var/www/cmdMusic'
+read web_id
+id=$(echo $web_id | sed -e "s/web_id=//g")
+id=${id::-1}
 
-#read meta file to figure out current state
-songNum=$(sed '1q;d' ../metaMusic)
-varShuf=$(sed '2q;d' ../metaMusic | sed -e "s/1://g")
-varRep=$(sed '3q;d' ../metaMusic | sed -e "s/2://g")
-varState=$(sed '4q;d' ../metaMusic | sed -e "s/3://g")
+read web_aleatori
+aleatori=$(echo $web_aleatori | sed -e "s/web_aleatori=//g")
+aleatori=${aleatori::-1}
+
+read web_repetir
+repetir=$(echo $web_repetir | sed -e "s/web_repetir=//g")
+repetir=${repetir::-1}
+
+read web_estat
+estat=$(echo $web_estat | sed -e "s/web_estat=//g")
+estat=${estat::-1}
 
 readarray -t array < <(ls -1 ../music)
 
 if [[ "$option" == "aleatori" ]]
 then
-	if [[ "$varShuf" == "ON" ]]
+	if [[ "$aleatori" == "1" ]]
 	then
-		varShuf="OFF"
+		aleatori="0"
 	else
-		varShuf="ON"
+		aleatori="1"
 	fi
 	logger "LOG: Opcio musica aleatoria"
 elif [[ "$option" == "repetir" ]]
 then
-	if [[ "$varRep" == "ON" ]]
+	if [[ "$repetir" == "1" ]]
         then
-                varRep="OFF"
+                repetir="0"
         else
-                varRep="ON"
+                repetir="1"
         fi
 	logger "LOG: Opcio musica repetir"
 elif [[ "$option" == "anterior" ]]
 then
-	if [[ "$varRep" == "OFF" ]]
+	if [[ "$repetir" == "0" ]]
         then
-                if [[ "$varShuf" == "ON" ]]
+                if [[ "$aleatori" == "1" ]]
 	        then
-	                songNum=$(echo $(($RANDOM % ${#array[@]})))
+	                id=$(echo $(($RANDOM % ${#array[@]})))
 	        else
-	                songNum=$(($songNum - 1))
-			if [[ "$songNum" == "-1" ]]
+	                id=$(($id - 1))
+			if [[ "$id" == "-1" ]]
 			then
-				songNum=$((${#array[@]} - 1))
+				id=$((${#array[@]} - 1))
 			fi
 	        fi
-
         fi
-	#Play songNum
-	sudo echo "load /var/www/music/${array[$songNum]}" >> "$mypipe"
-	varState="PLAY"
+	sudo pkill mpg123
+#	echo "mpg123 /var/www/music/${array[id]}"
+	sudo mpg123 /var/www/music/${array[id]}
+	estat="1"
 	logger "LOG: Opcio musica anterior"
 elif [[ "$option" == "seguent" ]]
 then
-        if [[ "$varRep" == "OFF" ]]
+        if [[ "$repetir" == "0" ]]
         then
-                if [[ "$varShuf" == "ON" ]]
+                if [[ "$aleatori" == "1" ]]
                 then
-                        songNum=$(echo $(($RANDOM % ${#array[@]})))
+                        id=$(echo $(($RANDOM % ${#array[@]})))
                 else
-                        songNum=$(($songNum + 1))
-                        if [[ "$songNum" == "${#array[@]}" ]]
+                        id=$(($id + 1))
+                        if [[ "$id" == "${#array[@]}" ]]
                         then
-                                songNum="0"
+                                id="0"
                         fi
                 fi
-
         fi
-        #Play songNum
-	sudo echo "load /var/www/music/${array[$songNum]}" >> "$mypipe"
-	varState="PLAY"
+        sudo pkill mpg123
+#	echo "mpg123 /var/www/music/${array[id]}"
+        sudo mpg123 /var/www/music/${array[id]}
+	varState="1"
 	logger "LOG: Opcio musica seguent"
 elif [[ "$option" == "pause" ]]
 then
-	if [[ "$varState" == "PLAY" ]]
+	if [[ "$estat" == "1" ]]
 	then
-		sudo echo "pause" >> "$mypipe"
-		varState="PAUSE"
+		sudo echo " "
+		estat="0"
 	fi
 	logger "LOG: Opcio musica pause"
 elif [[ "$option" == "play" ]]
 then
-	sudo echo "load /var/www/music/${array[$songNum]}" >> "$mypipe"
-	varState="PLAY"
+	sudo pkill mpg123
+        sudo mpg123 /var/www/music/${array[id]}
+	estat="1"
 	logger "LOG: Opcio musica play"
 fi
 
@@ -96,22 +105,11 @@ out=""
 for (( i=0; i<${#array[@]}; i++))
 do
         out+="<tr"
-	if [[ "$i" == "$songNum" ]]
+	if [[ "$i" == "$id" ]]
 	then
 		out+=' class="selected"'
 	fi
 	out+="> <td>"$(echo ${array[i]})"</td> </tr>"
 done
 
-echo $(cat ../html/musica.html | sed -e 's~{{codiHTML}}~'"$out"'~g' | sed -e "s~{dis_shuffle}~$varShuf~g" | sed -e "s~{dis_replay}~$varRep~g")
-
-echo $songNum > ../metaMusic
-echo "1:$varShuf" >> ../metaMusic
-echo "2:$varRep" >> ../metaMusic
-echo "3:$varState" >> ../metaMusic
-
-
-
-
-#echo 'load /var/www/phase2/music/Enemy.mp3' >> "$mypipe"
-#echo 'silence' >> "$mypipe"
+echo $(cat ../html/musica.html | sed -e 's~{{codiHTML}}~'"$out"'~g' | sed -e "s~{{id}}~$id~g" | sed -e "s~{{aleatori}}~$aleatori~g" | sed -e "s~{{repetir}}~$repetir~g" | sed -e "s~{{estat]}~$estat~g")

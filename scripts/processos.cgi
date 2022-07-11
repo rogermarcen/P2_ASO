@@ -21,8 +21,7 @@ then
 	logger "LOG: Usuari a matat un proces: $pid"
 elif [[ "$option" == "matarTemps" ]]
 then
-	sudo kill -STOP $pid
-	(sleep $temps; sudo kill -CONT $temps) &
+	(sleep $temps && sudo kill -9 $pid) &
 	logger "LOG: Usuari a interrumput un proces: $pid"
 fi
 
